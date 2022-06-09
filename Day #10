@@ -1,0 +1,64 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        int n = Convert.ToInt32(Console.ReadLine().Trim());
+        //let's create a list to save the binary digits that will represent our int n
+        List <int> bin = new List<int>();
+        // an int to save the result of n/2
+        int div = n;
+        // an int to save the remainder
+        int res;
+        // an int to save the maximum number of consecutive 1's
+        int con = 0;
+        // and int to save the current count of consecutive 1's
+        int temp = 0;
+        
+        do
+        {
+            //save the remainder in the list bin
+            res = div%2;
+            bin.Add(res);
+            div = div/2;
+        }
+        while (div != 0); //if div equals cero, we already got all the digits to represent the number in binary
+        //by the method explained in the tutorial, we must reverse the array to get the binary number
+        bin.Reverse();
+        
+        for (int i = 0; i < bin.Count; i++)
+        {
+            //Count consecutive 1's
+            if (bin[i] == 1)
+            {
+                temp++;
+                // save the current count if it is greater than con(our maximum) 
+                if (temp > con)
+                {
+                    con = temp;
+                }
+            }
+            //the next number isn't 1? resent the temp counter
+            else
+            {
+                temp = 0;
+            }
+        }
+        Console.WriteLine(con);
+    }
+}
