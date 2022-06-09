@@ -1,0 +1,62 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+
+        List<List<int>> arr = new List<List<int>>();
+        int listn = 0;
+
+        for (int i = 0; i < 6; i++)
+        {
+            arr.Add(Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList());
+        }
+       
+       // Solution
+        
+        int max = 0;
+        bool sumZero = false;
+        for (int i = 0; i < 6; i++) //is less than 6 because in all cases give array 6x6, this is to access each list of arrays within the larger list
+        {
+            for (int j = 0; j < 6; j++) // row has 6 elements, j < 6 so this is to access each element within and array of the arraylist.
+            {
+                if (j + 2 < 6 && i + 2 < 6)
+                //this code passes row position through i and column position through j
+                //when i=0, it will first take the hourglasses that can be formed starting from this row, in the example when i = 0these would be the ones that go from 111-1-111 to 000-0-000
+                {
+                    int sum = (arr[i][j] + arr[i][j + 1] + arr[i][j + 2]) // first 3 elements of row 1
+                    + (arr[i + 1][j + 1]) // the element of row 2
+                    + (arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2]); // first 3 elements of row 3
+                    if (sum > max) max = sum; // it works for positives
+                    if (sum < 0 && max == 0 && sum<max && !sumZero) max = sum; //it works for negatives
+                    //if almost all hourglass sums are negative except by one that equals to 0
+                    if (sum == 0) 
+                    {
+                    sumZero = true; 
+                    if (max<0)
+                        {
+                        max = sum;
+                        }
+                    }
+                }
+            }
+        }
+        Console.WriteLine(max);
+       
+    }
+}
