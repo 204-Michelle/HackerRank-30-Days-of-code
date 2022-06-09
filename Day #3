@@ -19,14 +19,15 @@ class Solution
     public static void Main(string[] args)
     {
         int N = Convert.ToInt32(Console.ReadLine().Trim());
-        // Define when a number is Weird
+        // Define what to do when a number is odd
         if(N%2 == 1) //always an odd number when divided by 2, will have as remainder 1
         {
             Console.WriteLine("Weird");
         }
+        // Define what to do when a number is even
         if (N%2 == 0) //always an even number when divided by 2, will have as remainder 0
         {
-            //if it satisfies that it is more than or equal to 2 and(&&) less than or equal to 5
+            //if it satisfies that it is more than or equal to 2 and(&&) less than or equal to 5:
             if (N>=2 && N<=5)  Console.WriteLine("Not Weird");
             // Range from 6 to 20:
             if (N>=6 && N<=20) Console.WriteLine("Weird");
