@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        int n = Convert.ToInt32(Console.ReadLine());
+        IDictionary<string, string> friendsNumbers = new Dictionary<string, string>();
+        for (int i = 0; i < n; i++)
+        {
+        string input = Console.ReadLine();
+        string[] temp = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        friendsNumbers.Add(temp[0], temp[1]);
+        }
+        // search elements
+        string query; // it allows us to enter the name
+        while ((query= Console.ReadLine()) != null) //as long as something is entered each time the code is repeated
+        {
+        string number = "";   //Here the number that corresponds to the name will be stored
+        if (friendsNumbers.TryGetValue(query, out number)) ///Get value of name, store in number
+        {
+            Console.WriteLine(query + "=" + number); //name = number
+        }
+        else
+        {
+            Console.WriteLine("Not found");
+        }
+        }
+
+    }
+}
