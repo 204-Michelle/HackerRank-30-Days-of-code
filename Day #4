@@ -1,0 +1,36 @@
+
+class Person {
+    public int age;     
+	public Person(int initialAge) {
+        // if initial age is negative
+        if (initialAge<0) 
+        {
+        Console.WriteLine("Age is not valid, setting age to 0."); 
+        age=0;
+        }
+        //if initial age is positive
+        age = initialAge;
+     }
+     public void amIOld() {
+         if(age < 13) 
+         {
+             Console.WriteLine("You are young.");
+         }
+         //Person's age is not less than 13? is it between 13 and 17?
+         else if(age >= 13 && age < 18)
+         {
+            Console.WriteLine("You are a teenager.");
+         }
+         //then age must be 18 or more
+         else 
+         {
+            Console.WriteLine("You are old.");
+         }
+     }
+
+     public void yearPasses() 
+     {
+        // Increment the age of the person in here
+        age= age + 1;
+     }
+//Don't forget, under this it must be the static void Main(String[] args)
