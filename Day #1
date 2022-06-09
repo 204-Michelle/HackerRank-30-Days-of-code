@@ -1,0 +1,20 @@
+// The variables i, d and s are already declarated and initializated by HackerRank        
+
+        // Declare second integer, double, and String variables.
+        int sumi;
+        double sumd;
+        string sums;
+        // Read and save an integer, double, and String to your variables.
+        sumi = Convert.ToInt32(Console.ReadLine());
+        sumd = Convert.ToDouble(Console.ReadLine());
+        sums = Console.ReadLine();
+        
+        // Print the sum of both integer variables on a new line.
+        Console.WriteLine(i+sumi);
+        // Print the sum of the double variables on a new line.
+        Console.WriteLine("{0:N1}", d+sumd); //0 represents the first value to be written, in this case it is d+sumd, N means number of digits and here we want to show only one decimal digit so we defined N1
+         
+        // Concatenate and print the String variables on a new line
+        
+        Console.WriteLine(s + sums);
+        // The 's' variable above should be printed first.
